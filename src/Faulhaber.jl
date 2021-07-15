@@ -26,7 +26,7 @@ julia> @btime faulhaber(Ref(2000.0)[], Val(7))
 ```
 """
 @generated function faulhaber(m, ::Val{p}) where p
-    @assert p >= 0
+    p >= 0 || throw(ArgumentError("The exponent must be non-negative! Got $p."))
     T = m
     IT = typeof(Integer(zero(m)))
     k = p + 1
