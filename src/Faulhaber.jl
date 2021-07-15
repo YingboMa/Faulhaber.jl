@@ -12,13 +12,17 @@ Examples:
 ```julia
 julia> using BenchmarkTools, Faulhaber
 
-julia> @btime faulhaber(Ref(Int128(1000))[], Val(7))
-  1.140 ns (0 allocations: 0 bytes)
-125500583333041666750000
+julia> @btime faulhaber(Ref(Int128(2000))[], Val(7))
+  1.143 ns (0 allocations: 0 bytes)
+32064037333328666667000000
 
-julia> @btime sum(i->i^7, 1:Int128(1000))
-  6.143 μs (0 allocations: 0 bytes)
-125500583333041666750000
+julia> @btime sum(i->i^7, 1:Int128(2000))
+  12.282 μs (0 allocations: 0 bytes)
+32064037333328666667000000
+
+julia> @btime faulhaber(Ref(2000.0)[], Val(7))
+  1.134 ns (0 allocations: 0 bytes)
+3.2064037333328662e25
 ```
 """
 @generated function faulhaber(m, ::Val{p}) where p
