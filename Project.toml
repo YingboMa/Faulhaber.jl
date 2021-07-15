@@ -1,7 +1,7 @@
 name = "Faulhaber"
 uuid = "33540e4f-9c8d-4a7a-bd62-985e8d20a53a"
 authors = ["Yingbo Ma <mayingbo5@gmail.com> and contributors"]
-version = "0.1.0"
+version = "1.0.0"
 
 [compat]
 julia = "1"
