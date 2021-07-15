@@ -3,9 +3,10 @@ module Faulhaber
 """
     faulhaber(m, ::Val{p})
 
-Compute the summation `sum(i->i^p, 1:m)`. When `m` is an integer, the function
-returns an exact integer solution assuming integer overflows don't occur. When
-`m` is a floating-point number, then it returns a less accurate float solution.
+Compute the summation `sum(i->i^p, 1:m)` in ``O(p)`` time. When `m` is an
+integer, the function returns an exact integer solution assuming integer
+overflows don't occur. When `m` is a floating-point number, then it returns a
+less accurate float solution.
 """
 @generated function faulhaber(m, ::Val{p}) where p
     @assert p >= 0
