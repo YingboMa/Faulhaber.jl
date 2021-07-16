@@ -1,5 +1,7 @@
 module Faulhaber
 
+using LinearAlgebra
+
 """
     faulhaber(m, ::Val{p})
 
@@ -30,7 +32,7 @@ julia> @btime faulhaber(Ref(2000.0)[], Val(7))
     T = m
     IT = typeof(Integer(zero(m)))
     k = p + 1
-    A = Rational{IT}[m > n ? zero(IT) : (-1)^(m+n) * binomial(IT(n), IT(m)-1)  for n in 1:k, m in 1:k]
+    A = LowerTriangular(Rational{IT}[m > n ? zero(IT) : (-1)^(m+n) * binomial(IT(n), IT(m)-1)  for n in 1:k, m in 1:k])
     cc = A' \ [i==k for i in 1:k]
     zz = zero(T)
     if m <: Integer
